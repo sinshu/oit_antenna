@@ -52,6 +52,9 @@
     <Compile Include="TextUtility.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="oitlogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="rsslist\anime.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

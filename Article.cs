@@ -13,7 +13,7 @@ namespace OitAntenna
                 int cmp = y.date.CompareTo(x.date);
                 if (cmp == 0)
                 {
-                    y.uri.CompareTo(x.uri);
+                    cmp = y.uri.CompareTo(x.uri);
                 }
                 return cmp;
             }

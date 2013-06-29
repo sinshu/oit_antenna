@@ -37,7 +37,7 @@ namespace OitAntenna
             writer.WriteLine("</head>");
             writer.WriteLine("<body>");
             BeginMainBox(writer);
-            writer.WriteLine("<h1>OITあんてな</h1>");
+            writer.WriteLine("<table><tr><td><img src=\"oitlogo.png\" alt=\"\"></td><td class=\"pagetitle\">" + Settings.Title + "</td></tr></table>");
             EndMainBox(writer);
         }
 
