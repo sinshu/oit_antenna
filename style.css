@@ -6,12 +6,14 @@ body
 .pagetitle
 {
 	font-size: 2em;
+	font-weight: bold;
 	color: #606060;
 }
 
-.pagetitle
+.lastupdate
 {
-	vertical-align: middle;
+	text-align: center;
+	color: #808080;
 }
 
 a.article
@@ -59,7 +61,7 @@ a.duplicate:hover
 	white-space: nowrap;
 }
 
-table
+.articlelist
 {
 	padding: 0.3em;
 	border-collapse: separate;

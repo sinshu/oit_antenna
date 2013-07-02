@@ -8,41 +8,27 @@ namespace OitAntenna
 {
     public class OitAntennaApplication
     {
-        private static Random random = new Random();
-
-        private Category cateVip;
-        private Category cateNews;
-        private Category cateAnime;
-        private Category cateSs;
-        private Category cateImage;
-
-        private Blog[] blogs;
+        private IDictionary<string, Category> categories;
+        private IList<Blog> blogs;
         private int reloadIntervalMs;
+
+        private static Random random = new Random();
 
         public OitAntennaApplication()
         {
             Log.WriteLine(Settings.Title + "起動", true);
 
             Log.WriteLine("RSSリストの読み込み", true);
-            IList<string> rssVip = TextUtility.ReadLines(@"rsslist\vip.txt");
-            IList<string> rssNews = TextUtility.ReadLines(@"rsslist\news.txt");
-            IList<string> rssAnime = TextUtility.ReadLines(@"rsslist\anime.txt");
-            IList<string> rssSs = TextUtility.ReadLines(@"rsslist\ss.txt");
-            IList<string> rssImage = TextUtility.ReadLines(@"rsslist\image.txt");
+            IList<string> rawRssList = TextUtility.ReadLines(Settings.RssListFileName);
+            CheckDuplicate(rawRssList);
+            Log.WriteLine("RSSの重複なし", false);
 
-            CheckDuplicate(rssVip, rssNews, rssAnime, rssSs, rssImage);
-            Log.WriteLine("RSSリストの重複なし", false);
+            categories = CreateCategoriesFromRawRssList(rawRssList);
 
-            cateVip = new Category("VIPとか色々", 300, rssVip);
-            cateNews = new Category("ニュース", 300, rssNews);
-            cateAnime = new Category("アニメ・漫画・ラノベ", 300, rssAnime);
-            cateSs = new Category("SS", 30, rssSs);
-            cateImage = new Category("画像", 30, rssImage);
+            blogs = GetRandomizedBlogList(categories.Values);
+            Log.WriteLine("総ブログ数: " + blogs.Count, true);
 
-            blogs = GetRandomizedBlogArray(cateVip, cateNews, cateAnime, cateSs, cateImage);
-            Log.WriteLine("総ブログ数: " + blogs.Length, false);
-
-            reloadIntervalMs = 1000 * 60 * Settings.ReloadIntervalMinutes / blogs.Length;
+            reloadIntervalMs = 1000 * 60 * Settings.ReloadIntervalMinutes / blogs.Count;
             Log.WriteLine("巡回間隔: " + (reloadIntervalMs / 1000.0).ToString("0.0") + "秒", false);
         }
 
@@ -88,44 +74,86 @@ namespace OitAntenna
 
         public void OutputHtml()
         {
-            using (StreamWriter writer = new StreamWriter("index.html", false, Encoding.GetEncoding(Settings.TextEncoding)))
+            string mainCategory;
+            string subCategory1;
+            string subCategory2;
+            DateTime now = DateTime.Now;
+            if (5 <= now.Hour && now.Hour <= 9)
+            {
+                mainCategory = "ニュース";
+                subCategory1 = "VIPとか色々";
+                subCategory2 = "アニメ・漫画・ラノベ";
+            }
+            else
+            {
+                mainCategory = "VIPとか色々";
+                subCategory1 = "ニュース";
+                subCategory2 = "アニメ・漫画・ラノベ";
+            }
+
+            using (StreamWriter writer = new StreamWriter(Settings.HtmlFileName, false, Encoding.GetEncoding(Settings.TextEncoding)))
             {
                 HtmlUtility.BeginHtml(writer);
 
                 HtmlUtility.BeginMainBox(writer);
-                HtmlUtility.WriteLargeWindow(writer, cateVip);
+                HtmlUtility.WriteLargeWindow(writer, categories[mainCategory]);
                 HtmlUtility.EndMainBox(writer);
 
                 HtmlUtility.BeginMainBox(writer);
-                HtmlUtility.WriteHalfWindow(writer, cateNews, true);
-                HtmlUtility.WriteHalfWindow(writer, cateAnime, false);
+                HtmlUtility.WriteHalfWindow(writer, categories[subCategory1], true);
+                HtmlUtility.WriteHalfWindow(writer, categories[subCategory2], false);
                 HtmlUtility.EndMainBox(writer);
 
                 HtmlUtility.BeginMainBox(writer);
-                HtmlUtility.WriteArticleList(writer, cateSs, true);
-                HtmlUtility.WriteArticleList(writer, cateImage, false);
+                HtmlUtility.WriteArticleList(writer, categories["SS"], true);
+                HtmlUtility.WriteArticleList(writer, categories["画像"], false);
                 HtmlUtility.EndMainBox(writer);
 
                 HtmlUtility.EndHtml(writer);
             }
         }
 
-        private static void CheckDuplicate(params IList<string>[] lists)
+        private static IDictionary<string, Category> CreateCategoriesFromRawRssList(IList<string> rawRssList)
+        {
+            Dictionary<string, Category> categories = new Dictionary<string, Category>();
+            string categoryName = null;
+            int maxNumArticles = 0;
+            List<string> rssUris = new List<string>();
+            foreach (string line in rawRssList)
+            {
+                if (line[0] == '[')
+                {
+                    if (categoryName != null)
+                    {
+                        categories.Add(categoryName, new Category(categoryName, maxNumArticles, rssUris));
+                        rssUris.Clear();
+                    }
+                    string[] temp = line.Substring(1, line.Length - 2).Split(',');
+                    categoryName = temp[0];
+                    maxNumArticles = int.Parse(temp[1]);
+                }
+                else
+                {
+                    rssUris.Add(line);
+                }
+            }
+            categories.Add(categoryName, new Category(categoryName, maxNumArticles, rssUris));
+            return categories;
+        }
+
+        private static void CheckDuplicate(ICollection<string> rssUris)
         {
             SortedSet<string> set = new SortedSet<string>();
-            foreach (IList<string> list in lists)
+            foreach (string rssUri in rssUris)
             {
-                foreach (string rssUri in list)
+                if (!set.Add(rssUri))
                 {
-                    if (!set.Add(rssUri))
-                    {
-                        throw new Exception("RSS[" + rssUri + "]が重複している");
-                    }
+                    throw new Exception("RSS[" + rssUri + "]が重複している");
                 }
             }
         }
 
-        private static Blog[] GetRandomizedBlogArray(params Category[] categories)
+        private static IList<Blog> GetRandomizedBlogList(ICollection<Category> categories)
         {
             int length = 0;
             foreach (Category category in categories)

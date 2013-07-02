@@ -5,6 +5,8 @@ namespace OitAntenna
 {
     public static class HtmlUtility
     {
+        private const string daysOfWeek = "日月火水木金土";
+
         public static string Escape(string s)
         {
             return s.Replace("<", "&lt;").Replace(">", "&gt;").Replace("\"", "&quot;").Replace("&", "&amp;");
@@ -36,9 +38,7 @@ namespace OitAntenna
             writer.WriteLine("<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">");
             writer.WriteLine("</head>");
             writer.WriteLine("<body>");
-            BeginMainBox(writer);
-            writer.WriteLine("<table><tr><td><img src=\"oitlogo.png\" alt=\"\"></td><td class=\"pagetitle\">" + Settings.Title + "</td></tr></table>");
-            EndMainBox(writer);
+            WriteTitle(writer);
         }
 
         public static void EndHtml(TextWriter writer)
@@ -55,6 +55,17 @@ namespace OitAntenna
         public static void EndMainBox(TextWriter writer)
         {
             writer.WriteLine("</div>");
+        }
+
+        public static void WriteTitle(TextWriter writer)
+        {
+            DateTime now = DateTime.Now;
+            BeginMainBox(writer);
+            writer.WriteLine("<table>");
+            writer.WriteLine("<tr><td><img src=\"oitlogo.png\" alt=\"\"></td><td class=\"pagetitle\">" + Settings.Title + "</td></tr>");
+            writer.WriteLine("<tr><td class=\"lastupdate\" colspan=\"2\">最終更新日：" + now.ToString("yyyy/MM/dd") + "(" + daysOfWeek[(int)now.DayOfWeek] + ") " + now.ToString("HH:mm:ss") + "</td></tr>");
+            writer.WriteLine("</table>");
+            EndMainBox(writer);
         }
 
         public static void WriteLargeWindow(TextWriter writer, Category category)
@@ -87,7 +98,7 @@ namespace OitAntenna
 
         private static void WriteArticleListSub(TextWriter writer, Category category, bool addDateTime, bool addBlogTitle)
         {
-            writer.WriteLine("<table>");
+            writer.WriteLine("<table class=\"articlelist\">");
 
             int currentDay = 0;
             foreach (ArticleBundle bundle in category.ArticleBundles)
