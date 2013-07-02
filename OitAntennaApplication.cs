@@ -78,7 +78,7 @@ namespace OitAntenna
             string subCategory1;
             string subCategory2;
             DateTime now = DateTime.Now;
-            if (5 <= now.Hour && now.Hour <= 9)
+            if (now.DayOfWeek != DayOfWeek.Sunday && now.DayOfWeek != DayOfWeek.Saturday && 5 <= now.Hour && now.Hour <= 8)
             {
                 mainCategory = "ニュース";
                 subCategory1 = "VIPとか色々";
