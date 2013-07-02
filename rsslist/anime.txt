@@ -1,9 +1,0 @@
-http://blog.livedoor.jp/seiyufan/index.rdf
-http://d.hatena.ne.jp/nunnnunn/rss
-http://yaraon.blog109.fc2.com/?xml
-http://himarin.net/index.rdf
-http://yuriplus.com/?xml
-http://houani.blog118.fc2.com/?xml
-http://2gigenchan.blog.fc2.com/?xml
-http://newnews-moe.com/index.rdf
-http://blog.livedoor.jp/insidears/index.rdf
