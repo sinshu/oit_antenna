@@ -26,11 +26,6 @@ namespace OitAntenna
             blogs = GetRandomizedBlogList(categories.Values);
             Log.WriteLine("総ブログ数: " + blogs.Count, true);
 
-            foreach (Blog blog in blogs)
-            {
-                Console.WriteLine(blog.Title);
-            }
-
             reloadIntervalMs = 1000 * 60 * Settings.ReloadIntervalMinutes / blogs.Count;
             Log.WriteLine("巡回間隔: " + (reloadIntervalMs / 1000.0).ToString("0.0") + "秒", false);
         }
