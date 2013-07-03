@@ -1,4 +1,4 @@
-[VIPとか色々,300]
+[VIPとか色々]
 http://news4vip.livedoor.biz/index.rdf
 http://blog.livedoor.jp/news23vip/index.rdf
 http://bipblog.com/index.rdf
@@ -47,7 +47,7 @@ http://news4wide.livedoor.biz/index.rdf
 http://guideline.livedoor.biz/index.rdf
 http://blog.livedoor.jp/chihhylove/index.rdf
 http://www.gadget2ch.com/index.rdf
-[ニュース,300]
+[ニュース]
 http://blog.livedoor.jp/dqnplus/index.rdf
 http://zinger-hole.net/rss.xml
 http://yutori2ch.blog67.fc2.com/?xml
@@ -79,7 +79,7 @@ http://kuromacyo.livedoor.biz/index.rdf
 http://aromablack5310.blog77.fc2.com/?xml
 http://potemkin.jp/index.rdf
 http://blog.livedoor.jp/googleyoutube/index.rdf
-[アニメ・漫画・ラノベ,300]
+[アニメ・漫画・ラノベ]
 http://blog.livedoor.jp/seiyufan/index.rdf
 http://d.hatena.ne.jp/nunnnunn/rss
 http://yaraon.blog109.fc2.com/?xml
@@ -89,7 +89,7 @@ http://houani.blog118.fc2.com/?xml
 http://2gigenchan.blog.fc2.com/?xml
 http://newnews-moe.com/index.rdf
 http://blog.livedoor.jp/insidears/index.rdf
-[SS,10]
+[SS]
 http://ssspecial578.blog135.fc2.com/?xml
 http://morikinoko.com/index.rdf
 http://feed.rssad.jp/rss/fc2/invariant0.blog130
@@ -100,6 +100,6 @@ http://horahorazoon.blog134.fc2.com/?xml
 http://may841.blog9.fc2.com/?xml
 http://minnanohimatubushi.2chblog.jp/index.rdf
 http://142ch.blog90.fc2.com/?xml
-[画像,10]
+[画像]
 http://ayutube.blog.fc2.com/?xml
 http://gazou.webhitode.com/?feed=rss2

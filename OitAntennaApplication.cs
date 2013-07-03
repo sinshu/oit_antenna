@@ -26,6 +26,11 @@ namespace OitAntenna
             blogs = GetRandomizedBlogList(categories.Values);
             Log.WriteLine("総ブログ数: " + blogs.Count, true);
 
+            foreach (Blog blog in blogs)
+            {
+                Console.WriteLine(blog.Title);
+            }
+
             reloadIntervalMs = 1000 * 60 * Settings.ReloadIntervalMinutes / blogs.Count;
             Log.WriteLine("巡回間隔: " + (reloadIntervalMs / 1000.0).ToString("0.0") + "秒", false);
         }
@@ -97,28 +102,25 @@ namespace OitAntenna
         private static IDictionary<string, Category> CreateCategoriesFromRawRssList(IList<string> rawRssList)
         {
             Dictionary<string, Category> categories = new Dictionary<string, Category>();
-            string categoryName = null;
-            int maxNumArticles = 0;
+            string currentCategoryName = null;
             List<string> rssUris = new List<string>();
             foreach (string line in rawRssList)
             {
                 if (line[0] == '[')
                 {
-                    if (categoryName != null)
+                    if (currentCategoryName != null)
                     {
-                        categories.Add(categoryName, new Category(categoryName, rssUris));
+                        categories.Add(currentCategoryName, new Category(currentCategoryName, rssUris));
                         rssUris.Clear();
                     }
-                    string[] temp = line.Substring(1, line.Length - 2).Split(',');
-                    categoryName = temp[0];
-                    maxNumArticles = int.Parse(temp[1]);
+                    currentCategoryName = line.Substring(1, line.Length - 2);
                 }
                 else
                 {
                     rssUris.Add(line);
                 }
             }
-            categories.Add(categoryName, new Category(categoryName, rssUris));
+            categories.Add(currentCategoryName, new Category(currentCategoryName, rssUris));
             return categories;
         }
 
