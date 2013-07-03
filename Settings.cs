@@ -13,7 +13,12 @@ namespace OitAntenna
 
         public const int BlogMaxNumArticles = 100;
         public const int ArticleBundleMaxNumArticles = 30;
+        public const int CategoryMaxNumArticleBundles = 1000;
         public const double StringDistanceThreshold = 0.3;
+
+        public const int MainCategoryNumArticles = 200;
+        public const int SubCategoryNumArticles = 100;
+        public const int OtherCategoryNumArticles = 20;
 
         public const int ReloadIntervalMinutes = 15;
     }

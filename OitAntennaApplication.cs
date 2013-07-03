@@ -16,8 +16,6 @@ namespace OitAntenna
 
         public OitAntennaApplication()
         {
-            Log.WriteLine(Settings.Title + "起動", true);
-
             Log.WriteLine("RSSリストの読み込み", true);
             IList<string> rawRssList = TextUtility.ReadLines(Settings.RssListFileName);
             CheckDuplicate(rawRssList);
@@ -32,7 +30,7 @@ namespace OitAntenna
             Log.WriteLine("巡回間隔: " + (reloadIntervalMs / 1000.0).ToString("0.0") + "秒", false);
         }
 
-        public void AutoF5()
+        public void Crawl()
         {
             while (true)
             {
@@ -74,39 +72,22 @@ namespace OitAntenna
 
         public void OutputHtml()
         {
-            string mainCategory;
-            string subCategory1;
-            string subCategory2;
-            DateTime now = DateTime.Now;
-            if (now.DayOfWeek != DayOfWeek.Sunday && now.DayOfWeek != DayOfWeek.Saturday && 5 <= now.Hour && now.Hour <= 8)
-            {
-                mainCategory = "ニュース";
-                subCategory1 = "VIPとか色々";
-                subCategory2 = "アニメ・漫画・ラノベ";
-            }
-            else
-            {
-                mainCategory = "VIPとか色々";
-                subCategory1 = "ニュース";
-                subCategory2 = "アニメ・漫画・ラノベ";
-            }
-
             using (StreamWriter writer = new StreamWriter(Settings.HtmlFileName, false, Encoding.GetEncoding(Settings.TextEncoding)))
             {
                 HtmlUtility.BeginHtml(writer);
 
                 HtmlUtility.BeginMainBox(writer);
-                HtmlUtility.WriteLargeWindow(writer, categories[mainCategory]);
+                HtmlUtility.WriteLargeWindow(writer, categories["VIPとか色々"]);
                 HtmlUtility.EndMainBox(writer);
 
                 HtmlUtility.BeginMainBox(writer);
-                HtmlUtility.WriteHalfWindow(writer, categories[subCategory1], true);
-                HtmlUtility.WriteHalfWindow(writer, categories[subCategory2], false);
+                HtmlUtility.WriteHalfWindow(writer, categories["ニュース"], true);
+                HtmlUtility.WriteHalfWindow(writer, categories["アニメ・漫画・ラノベ"], false);
                 HtmlUtility.EndMainBox(writer);
 
                 HtmlUtility.BeginMainBox(writer);
-                HtmlUtility.WriteArticleList(writer, categories["SS"], true);
-                HtmlUtility.WriteArticleList(writer, categories["画像"], false);
+                HtmlUtility.WriteArticleList(writer, categories["SS"], Settings.OtherCategoryNumArticles, true);
+                HtmlUtility.WriteArticleList(writer, categories["画像"], Settings.OtherCategoryNumArticles, false);
                 HtmlUtility.EndMainBox(writer);
 
                 HtmlUtility.EndHtml(writer);
@@ -125,7 +106,7 @@ namespace OitAntenna
                 {
                     if (categoryName != null)
                     {
-                        categories.Add(categoryName, new Category(categoryName, maxNumArticles, rssUris));
+                        categories.Add(categoryName, new Category(categoryName, rssUris));
                         rssUris.Clear();
                     }
                     string[] temp = line.Substring(1, line.Length - 2).Split(',');
@@ -137,7 +118,7 @@ namespace OitAntenna
                     rssUris.Add(line);
                 }
             }
-            categories.Add(categoryName, new Category(categoryName, maxNumArticles, rssUris));
+            categories.Add(categoryName, new Category(categoryName, rssUris));
             return categories;
         }
 

@@ -72,7 +72,7 @@ namespace OitAntenna
         {
             writer.WriteLine("<span class=\"titlebar\">" + category.Name + "</span>");
             writer.WriteLine("<div class=\"largewindow\">");
-            WriteArticleListSub(writer, category, true, true);
+            WriteArticleListSub(writer, category, Settings.MainCategoryNumArticles, true, true);
             writer.WriteLine("</div>");
         }
 
@@ -82,31 +82,32 @@ namespace OitAntenna
             writer.WriteLine("<div class=\"" + boxClass + "\">");
             writer.WriteLine("<span class=\"titlebar\">" + category.Name + "</span>");
             writer.WriteLine("<div class=\"halfwindow\">");
-            WriteArticleListSub(writer, category, true, false);
+            WriteArticleListSub(writer, category, Settings.SubCategoryNumArticles, true, false);
             writer.WriteLine("</div>");
             writer.WriteLine("</div>");
         }
 
-        public static void WriteArticleList(TextWriter writer, Category category, bool left)
+        public static void WriteArticleList(TextWriter writer, Category category, int numArticles, bool left)
         {
             string boxClass = left ? "leftbox" : "rightbox";
             writer.WriteLine("<div class=\"" + boxClass + "\">");
             writer.WriteLine("<div class=\"category\">" + category.Name + "</div>");
-            WriteArticleListSub(writer, category, false, false);
+            WriteArticleListSub(writer, category, numArticles, false, false);
             writer.WriteLine("</div>");
         }
 
-        private static void WriteArticleListSub(TextWriter writer, Category category, bool addDateTime, bool addBlogTitle)
+        private static void WriteArticleListSub(TextWriter writer, Category category, int numArticles, bool addDateTime, bool addBlogTitle)
         {
             writer.WriteLine("<table class=\"articlelist\">");
 
-            int currentDay = 0;
+            int i = 0;
+            int day = 0;
             foreach (ArticleBundle bundle in category.ArticleBundles)
             {
-                if (addDateTime && bundle.MainArticle.Date.Day != currentDay)
+                if (addDateTime && bundle.MainArticle.Date.Day != day)
                 {
                     writer.Write("<tr><td class=\"date\" colspan=\"2\">" + bundle.MainArticle.Date.ToString("MM/dd") + "</td></tr>");
-                    currentDay = bundle.MainArticle.Date.Day;
+                    day = bundle.MainArticle.Date.Day;
                 }
 
                 writer.Write("<tr>");
@@ -115,10 +116,10 @@ namespace OitAntenna
                     writer.Write("<td class=\"time\">" + bundle.MainArticle.Date.ToString("HH:mm") + "</td>");
                 }
                 writer.Write("<td>");
-                int i = 0;
+                int j = 0;
                 foreach (Article article in bundle.Articles)
                 {
-                    if (i == 0)
+                    if (j == 0)
                     {
                         writer.Write(CreateLink(article.Uri, article.Title, "article", article.Blog.Title));
                     }
@@ -126,7 +127,7 @@ namespace OitAntenna
                     {
                         writer.Write(" " + CreateLink(article.Uri, "●", "duplicate", article.Blog.Title));
                     }
-                    i++;
+                    j++;
                 }
                 writer.Write("</td>");
                 if (addBlogTitle)
@@ -134,6 +135,12 @@ namespace OitAntenna
                     writer.Write("<td class=\"blogtitle\">" + CreateLink(bundle.MainArticle.Blog.Uri, bundle.MainArticle.Blog.Title, "article") + "</td>");
                 }
                 writer.WriteLine("</tr>");
+
+                i++;
+                if (i >= numArticles)
+                {
+                    break;
+                }
             }
 
             writer.WriteLine("</table>");

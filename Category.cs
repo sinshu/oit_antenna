@@ -9,10 +9,10 @@ namespace OitAntenna
         private ArticleBundleHolder articleBundleHolder;
         private Blog[] blogs;
 
-        public Category(string name, int maxNumArticleBundles, ICollection<string> rssUris)
+        public Category(string name, ICollection<string> rssUris)
         {
             this.name = name;
-            articleBundleHolder = new ArticleBundleHolder(maxNumArticleBundles);
+            articleBundleHolder = new ArticleBundleHolder(Settings.CategoryMaxNumArticleBundles);
             blogs = new Blog[rssUris.Count];
 
             Log.WriteLine("カテゴリ[" + name + "]の初期化", true);
