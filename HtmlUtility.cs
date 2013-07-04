@@ -9,7 +9,7 @@ namespace OitAntenna
 
         public static string Escape(string s)
         {
-            return s.Replace("<", "&lt;").Replace(">", "&gt;").Replace("\"", "&quot;").Replace("&", "&amp;");
+            return s.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;").Replace("\"", "&quot;");
         }
 
         public static string CreateLink(string uri, string name)
