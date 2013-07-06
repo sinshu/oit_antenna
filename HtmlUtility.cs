@@ -36,6 +36,8 @@ namespace OitAntenna
             writer.WriteLine("<meta http-equiv=\"Content-Style-Type\" content=\"text/css\">");
             writer.WriteLine("<title>" + Settings.Title + "</title>");
             writer.WriteLine("<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">");
+            writer.WriteLine("<link rel=\"shortcut icon\" href=\"favicon.ico\" type=\"image/vnd.microsoft.icon\">");
+            writer.WriteLine("<link rel=\"icon\" href=\"favicon.ico\" type=\"image/vnd.microsoft.icon\">");
             writer.WriteLine("</head>");
             writer.WriteLine("<body>");
             WriteTitle(writer);
