@@ -21,7 +21,6 @@ namespace OitAntenna
             Reload();
         }
 
-        // 糞実装
         public ICollection<Article> Reload()
         {
             XmlDocument document = new XmlDocument();
@@ -32,16 +31,13 @@ namespace OitAntenna
 
             List<Article> newArticleList = new List<Article>();
 
+            bool isRss2 = document.DocumentElement.Name == "rss";
             XmlNodeList itemNodes = document.GetElementsByTagName("item");
             foreach (XmlNode itemNode in itemNodes)
             {
                 XmlElement itemElement = (XmlElement)itemNode;
                 string articleUri = itemElement.GetElementsByTagName("link")[0].InnerText;
-                XmlNodeList dateNodes = itemElement.GetElementsByTagName("dc:date");
-                if (dateNodes.Count == 0)
-                {
-                    dateNodes = itemElement.GetElementsByTagName("pubDate");
-                }
+                XmlNodeList dateNodes = itemElement.GetElementsByTagName(isRss2 ? "pubDate" : "dc:date");
                 DateTime articleDate = DateTime.Parse(dateNodes[0].InnerText);
                 string articleTitle = itemElement.GetElementsByTagName("title")[0].InnerText;
                 Article newArticle = new Article(this, articleUri, articleDate, articleTitle);

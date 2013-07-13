@@ -21,5 +21,7 @@ namespace OitAntenna
         public const int OtherCategoryNumArticles = 20;
 
         public const int ReloadIntervalMinutes = 15;
+
+        public static readonly bool OutputLogFile = false;
     }
 }

@@ -15,7 +15,7 @@ namespace OitAntenna
             Log.WriteLine("初期化完了", true);
             app.OutputHtml();
             Log.WriteLine("巡回開始", true);
-            app.Crawl();
+            app.Run();
         }
     }
 }

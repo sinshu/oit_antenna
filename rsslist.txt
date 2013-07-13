@@ -60,7 +60,6 @@ http://matometanews.com/index.rdf
 http://lifehack2ch.livedoor.biz/index.rdf
 http://chitekizaisan.blog28.fc2.com/?xml
 http://now2chblog.blog55.fc2.com/?xml
-http://blog.livedoor.jp/dodonpa_1/index.rdf
 http://inakanews.doorblog.jp/index.rdf
 http://fullbokko.2chblog.jp/index.rdf
 http://hypernews.2chblog.jp/index.rdf

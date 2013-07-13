@@ -10,8 +10,11 @@ namespace OitAntenna
 
         static Log()
         {
-            string dateTime = DateTime.Now.ToString("yyMMddHHmmss");
-            writer = new StreamWriter("log" + dateTime + ".txt", false, Encoding.GetEncoding(Settings.TextEncoding));
+            if (Settings.OutputLogFile)
+            {
+                string dateTime = DateTime.Now.ToString("yyMMddHHmmss");
+                writer = new StreamWriter("log" + dateTime + ".txt", false, Encoding.GetEncoding(Settings.TextEncoding));
+            }
         }
 
         public static void WriteLine(string message, bool addDateTime)
@@ -29,15 +32,21 @@ namespace OitAntenna
         public static void WriteException(Exception e)
         {
             Console.WriteLine(e);
-            writer.WriteLine(e);
-            writer.Flush();
+            if (Settings.OutputLogFile)
+            {
+                writer.WriteLine(e);
+                writer.Flush();
+            }
         }
 
         private static void WriteLineSub(string message)
         {
             Console.WriteLine(message);
-            writer.WriteLine(message);
-            writer.Flush();
+            if (Settings.OutputLogFile)
+            {
+                writer.WriteLine(message);
+                writer.Flush();
+            }
         }
     }
 }

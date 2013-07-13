@@ -30,7 +30,7 @@ namespace OitAntenna
             Log.WriteLine("巡回間隔: " + (reloadIntervalMs / 1000.0).ToString("0.0") + "秒", false);
         }
 
-        public void Crawl()
+        public void Run()
         {
             while (true)
             {

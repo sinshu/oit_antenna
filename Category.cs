@@ -9,7 +9,7 @@ namespace OitAntenna
         private ArticleBundleHolder articleBundleHolder;
         private Blog[] blogs;
 
-        public Category(string name, ICollection<string> rssUris)
+        internal Category(string name, ICollection<string> rssUris)
         {
             this.name = name;
             articleBundleHolder = new ArticleBundleHolder(Settings.CategoryMaxNumArticleBundles);
@@ -21,7 +21,15 @@ namespace OitAntenna
             foreach (string rssUri in rssUris)
             {
                 Log.WriteLine("RSS[" + rssUri + "]を取得", false);
-                blogs[i] = new Blog(this, rssUri);
+                try
+                {
+                    blogs[i] = new Blog(this, rssUri);
+                }
+                catch
+                {
+                    Log.WriteLine("RSS[" + rssUri + "]の取得に失敗", false);
+                    throw;
+                }
                 Log.WriteLine("ブログ[" + blogs[i].Title + "]を確認", false);
 
                 if (DateTime.Now - blogs[i].NewestArticle.Date >= TimeSpan.FromDays(30))
