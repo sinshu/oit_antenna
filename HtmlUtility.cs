@@ -108,7 +108,7 @@ namespace OitAntenna
             {
                 if (addDateTime && bundle.MainArticle.Date.Day != day)
                 {
-                    writer.Write("<tr><td class=\"date\" colspan=\"2\">" + bundle.MainArticle.Date.ToString("MM/dd") + "</td></tr>");
+                    writer.WriteLine("<tr><td class=\"date\" colspan=\"2\">" + bundle.MainArticle.Date.ToString("MM/dd") + "</td></tr>");
                     day = bundle.MainArticle.Date.Day;
                 }
 
