@@ -94,7 +94,7 @@ namespace OitAntenna
             }
         }
 
-        private static IDictionary<string, Category> CreateCategoriesFromRawRssList(IList<string> rawRssList)
+        private static IDictionary<string, Category> CreateCategoriesFromRawRssList(IEnumerable<string> rawRssList)
         {
             Dictionary<string, Category> categories = new Dictionary<string, Category>();
             string currentCategoryName = null;
