@@ -123,7 +123,12 @@ namespace OitAntenna
                 {
                     if (j == 0)
                     {
-                        writer.Write(CreateLink(article.Uri, article.Title, "article", article.Blog.Title));
+                        string title = article.Title;
+                        if (title.Length == 0)
+                        {
+                            title = "無題";
+                        }
+                        writer.Write(CreateLink(article.Uri, title, "article", article.Blog.Title));
                     }
                     else
                     {
