@@ -38,6 +38,10 @@ namespace OitAntenna
                 string articleUri = itemElement.GetElementsByTagName("link")[0].InnerText;
                 XmlNodeList dateNodes = itemElement.GetElementsByTagName(isRss2 ? "pubDate" : "dc:date");
                 DateTime articleDate = DateTime.Parse(dateNodes[0].InnerText);
+                if (articleDate > DateTime.Now)
+                {
+                    articleDate = DateTime.Now;
+                }
                 string articleTitle = itemElement.GetElementsByTagName("title")[0].InnerText;
                 Article newArticle = new Article(this, articleUri, articleDate, articleTitle);
                 if (articleSet.Add(newArticle))
