@@ -34,7 +34,7 @@ http://blog.livedoor.jp/darkm/index.rdf
 http://exawarosu.net/index.rdf
 http://hyukkyyyy.blog61.fc2.com/?xml
 http://tokihakita.blog91.fc2.com/?xml
-http://kanasoku.blog82.fc2.com/?xml
+http://kanasoku.info/index.rdf
 http://vippers.jp/index.rdf
 http://vip0nanzo.blog109.fc2.com/?xml
 http://gogotorimaru.blog19.fc2.com/?xml

@@ -17,7 +17,15 @@ namespace OitAntenna
             this.category = category;
             this.rssUri = rssUri;
             articleSet = new SortedSet<Article>(Article.UriOrder);
-            Reload();
+            try
+            {
+                Reload();
+            }
+            catch (Exception e)
+            {
+                Log.WriteLine("RSS[" + rssUri + "]の取得に失敗", false);
+                Log.WriteException(e);
+            }
         }
 
         public ICollection<Article> Reload()
