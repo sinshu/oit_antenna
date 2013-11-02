@@ -18,7 +18,7 @@ namespace OitAntenna
         {
             foreach (ArticleBundle bundle in articleBundleSet)
             {
-                if (bundle.MainArticle.Blog != article.Blog && AreSame(bundle.MainArticle, article))
+                if (bundle.MainArticle.Title == article.Title || bundle.MainArticle.Blog != article.Blog && AreSame(bundle.MainArticle, article))
                 {
                     articleBundleSet.Remove(bundle);
                     bundle.Bundle(article);

@@ -32,6 +32,7 @@ namespace OitAntenna
             writer.WriteLine("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
             writer.WriteLine("<html lang=\"ja\">");
             writer.WriteLine("<head>");
+            writer.WriteLine("<meta name=\"robots\" content=\"noindex, nofollow, noarchive\">");
             writer.WriteLine("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=" + Settings.TextEncoding + "\">");
             writer.WriteLine("<meta http-equiv=\"Content-Style-Type\" content=\"text/css\">");
             writer.WriteLine("<title>" + Settings.Title + "</title>");

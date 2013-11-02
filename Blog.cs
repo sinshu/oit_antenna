@@ -60,12 +60,17 @@ namespace OitAntenna
 
             category.BlogUpdated(newArticleList);
 
+            DiscardOldArticles();
+
+            return newArticleList;
+        }
+
+        private void DiscardOldArticles()
+        {
             while (articleSet.Count > Settings.BlogMaxNumArticles)
             {
                 articleSet.Remove(articleSet.Max);
             }
-
-            return newArticleList;
         }
 
         public Category Category

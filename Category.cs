@@ -22,12 +22,15 @@ namespace OitAntenna
             {
                 Log.WriteLine("RSS[" + rssUri + "]を取得", false);
                 blogs[i] = new Blog(this, rssUri);
-                Log.WriteLine("ブログ[" + blogs[i].Title + "]を確認", false);
 
-                if (DateTime.Now - blogs[i].NewestArticle.Date >= TimeSpan.FromDays(30))
+                if (blogs[i].Title != null)
                 {
-                    int m = (int)((DateTime.Now - blogs[i].NewestArticle.Date).TotalDays / 30);
-                    Log.WriteLine("(警告)ブログ[" + blogs[i].Title + "]は" + m + "ヵ月以上更新されていない", false);
+                    Log.WriteLine("ブログ[" + blogs[i].Title + "]を検出", false);
+                    if (DateTime.Now - blogs[i].NewestArticle.Date >= TimeSpan.FromDays(30))
+                    {
+                        int m = (int)((DateTime.Now - blogs[i].NewestArticle.Date).TotalDays / 30);
+                        Log.WriteLine("(警告)ブログ[" + blogs[i].Title + "]は" + m + "ヵ月以上更新されていない", false);
+                    }
                 }
 
                 i++;

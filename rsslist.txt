@@ -2,7 +2,6 @@
 http://news4vip.livedoor.biz/index.rdf
 http://blog.livedoor.jp/news23vip/index.rdf
 http://bipblog.com/index.rdf
-http://suiseisekisuisui.blog107.fc2.com/?xml
 http://workingnews.blog117.fc2.com/?xml
 http://www.mudainodocument.com/index.rdf
 http://chaos2ch.com/index.rdf
@@ -12,8 +11,6 @@ http://himasoku.com/index.rdf
 http://blog.livedoor.jp/nicovip2ch/index.rdf
 http://blog.livedoor.jp/hisabisaniwarota/index.rdf
 http://michaelsan.livedoor.biz/index.rdf
-http://2r.ldblog.jp/index.rdf
-http://minisoku.blog97.fc2.com/?xml
 http://hamusoku.com/index.rdf
 http://hijikisokuhou.doorblog.jp/index.rdf
 http://blog.livedoor.jp/nonvip/index.rdf
@@ -47,6 +44,11 @@ http://news4wide.livedoor.biz/index.rdf
 http://guideline.livedoor.biz/index.rdf
 http://blog.livedoor.jp/chihhylove/index.rdf
 http://www.gadget2ch.com/index.rdf
+http://aramame.doorblog.jp/index.rdf
+http://damage0.blomaga.jp/index.rdf
+http://totalmatomedia.blog.fc2.com/?xml
+http://nnt-sokuhou.com/index.rdf
+http://shikaku2ch.doorblog.jp/index.rdf
 [ニュース]
 http://blog.livedoor.jp/dqnplus/index.rdf
 http://zinger-hole.net/rss.xml
@@ -78,6 +80,7 @@ http://kuromacyo.livedoor.biz/index.rdf
 http://aromablack5310.blog77.fc2.com/?xml
 http://potemkin.jp/index.rdf
 http://blog.livedoor.jp/googleyoutube/index.rdf
+http://military38.com/index.rdf
 [アニメ・漫画・ラノベ]
 http://blog.livedoor.jp/seiyufan/index.rdf
 http://d.hatena.ne.jp/nunnnunn/rss
