@@ -49,7 +49,7 @@ namespace OitAntenna
             this.date = date;
             this.title = title;
             normalizedTitle = NormalizeTitle(title);
-            id = date.ToString("yyMMddHHmmss") + title;
+            id = date.ToString("yyMMdd") + title;
 
             if (this.date > DateTime.Now)
             {
