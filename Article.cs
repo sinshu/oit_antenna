@@ -49,7 +49,7 @@ namespace OitAntenna
             this.date = date;
             this.title = title;
             normalizedTitle = NormalizeTitle(title);
-            id = date.ToString("yyMMdd") + title;
+            id = GetIDFromUri(uri);
 
             if (this.date > DateTime.Now)
             {
@@ -81,6 +81,12 @@ namespace OitAntenna
                 }
             }
             return sb.ToString();
+        }
+
+        private static string GetIDFromUri(string uri)
+        {
+            string[] s = uri.Split('/');
+            return s[s.Length - 1];
         }
 
         public Blog Blog
