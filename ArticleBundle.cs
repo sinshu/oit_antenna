@@ -30,7 +30,6 @@ namespace OitAntenna
 
         public void Bundle(Article article)
         {
-            articleSet.RemoveWhere((a) => a.Blog == article.Blog);
             if (articleSet.Count < Settings.ArticleBundleMaxNumArticles)
             {
                 articleSet.Add(article);

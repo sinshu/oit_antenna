@@ -19,22 +19,28 @@ namespace OitAntenna
             }
         }
 
-        private class UriOrderComparer : IComparer<Article>
+        private class IDOrderComparer : IComparer<Article>
         {
             public int Compare(Article x, Article y)
             {
-                return y.uri.CompareTo(x.uri);
+                int cmp = y.id.CompareTo(x.id);
+                if (cmp == 0)
+                {
+                    cmp = y.uri.CompareTo(x.uri);
+                }
+                return cmp;
             }
         }
 
         private static DateOrderComparer dateOrder = new DateOrderComparer();
-        private static UriOrderComparer uriOrder = new UriOrderComparer();
+        private static IDOrderComparer idOrder = new IDOrderComparer();
 
         private Blog blog;
         private string uri;
         private DateTime date;
         private string title;
         private string normalizedTitle;
+        private string id;
 
         internal Article(Blog blog, string uri, DateTime date, string title)
         {
@@ -43,6 +49,12 @@ namespace OitAntenna
             this.date = date;
             this.title = title;
             normalizedTitle = NormalizeTitle(title);
+            id = date.ToString("yyMMddHHmmss") + title;
+
+            if (this.date > DateTime.Now)
+            {
+                this.date = DateTime.Now;
+            }
         }
 
         public static string NormalizeTitle(string title)
@@ -119,11 +131,11 @@ namespace OitAntenna
             }
         }
 
-        public static IComparer<Article> UriOrder
+        public static IComparer<Article> IDOrder
         {
             get
             {
-                return uriOrder;
+                return idOrder;
             }
         }
     }
