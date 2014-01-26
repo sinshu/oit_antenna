@@ -16,19 +16,28 @@ namespace OitAntenna
 
         public void Add(Article article)
         {
+            ArticleBundle targetBundle = null;
             foreach (ArticleBundle bundle in articleBundleSet)
             {
                 if (bundle.MainArticle.Blog != article.Blog && AreSame(bundle.MainArticle, article))
                 {
-                    bundle.Bundle(article);
-                    return;
+                    targetBundle = bundle;
+                    break;
                 }
             }
-
-            articleBundleSet.Add(new ArticleBundle(article));
-            while (articleBundleSet.Count > maxNumArticleBundles)
+            if (targetBundle != null)
             {
-                articleBundleSet.Remove(articleBundleSet.Max);
+                articleBundleSet.Remove(targetBundle);
+                targetBundle.Bundle(article);
+                articleBundleSet.Add(targetBundle);
+            }
+            else
+            {
+                articleBundleSet.Add(new ArticleBundle(article));
+                while (articleBundleSet.Count > maxNumArticleBundles)
+                {
+                    articleBundleSet.Remove(articleBundleSet.Max);
+                }
             }
         }
 

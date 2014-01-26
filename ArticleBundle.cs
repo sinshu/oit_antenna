@@ -32,9 +32,10 @@ namespace OitAntenna
 
         public void Bundle(Article article)
         {
-            if (articleSet.Count < Settings.ArticleBundleMaxNumArticles)
+            articleSet.Add(article);
+            while (articleSet.Count > Settings.ArticleBundleMaxNumArticles)
             {
-                articleSet.Add(article);
+                articleSet.Remove(articleSet.Max);
             }
         }
 
@@ -42,7 +43,7 @@ namespace OitAntenna
         {
             get
             {
-                return mainArticle;
+                return articleSet.Min;
             }
         }
 
