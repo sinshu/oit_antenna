@@ -24,8 +24,8 @@ namespace OitAntenna
                     return;
                 }
             }
-            articleBundleSet.Add(new ArticleBundle(article));
 
+            articleBundleSet.Add(new ArticleBundle(article));
             while (articleBundleSet.Count > maxNumArticleBundles)
             {
                 articleBundleSet.Remove(articleBundleSet.Max);
