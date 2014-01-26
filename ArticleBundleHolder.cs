@@ -20,9 +20,7 @@ namespace OitAntenna
             {
                 if (bundle.MainArticle.Blog != article.Blog && AreSame(bundle.MainArticle, article))
                 {
-                    articleBundleSet.Remove(bundle);
                     bundle.Bundle(article);
-                    articleBundleSet.Add(bundle);
                     return;
                 }
             }

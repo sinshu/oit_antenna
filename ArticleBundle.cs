@@ -20,10 +20,12 @@ namespace OitAntenna
 
         private static MainArticleDateOrderComparer mainArticleDateOrder = new MainArticleDateOrderComparer();
 
+        private Article mainArticle;
         private SortedSet<Article> articleSet;
 
         internal ArticleBundle(Article mainArticle)
         {
+            this.mainArticle = mainArticle;
             articleSet = new SortedSet<Article>(Article.DateOrder);
             articleSet.Add(mainArticle);
         }
@@ -40,7 +42,7 @@ namespace OitAntenna
         {
             get
             {
-                return articleSet.Min;
+                return mainArticle;
             }
         }
 
