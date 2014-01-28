@@ -13,7 +13,7 @@ namespace OitAntenna
                 int cmp = y.date.CompareTo(x.date);
                 if (cmp == 0)
                 {
-                    cmp = y.uri.CompareTo(x.uri);
+                    cmp = y.id.CompareTo(x.id);
                 }
                 return cmp;
             }
@@ -23,12 +23,7 @@ namespace OitAntenna
         {
             public int Compare(Article x, Article y)
             {
-                int cmp = y.id.CompareTo(x.id);
-                if (cmp == 0)
-                {
-                    cmp = y.uri.CompareTo(x.uri);
-                }
-                return cmp;
+                return y.id.CompareTo(x.id);
             }
         }
 
