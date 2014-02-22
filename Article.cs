@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace OitAntenna
 {
@@ -30,12 +31,14 @@ namespace OitAntenna
         private static DateOrderComparer dateOrder = new DateOrderComparer();
         private static IDOrderComparer idOrder = new IDOrderComparer();
 
+        private static Regex exceptDigits = new Regex(@"\D");
+
         private Blog blog;
         private string uri;
         private DateTime date;
         private string title;
         private string normalizedTitle;
-        private string id;
+        private long id;
 
         internal Article(Blog blog, string uri, DateTime date, string title)
         {
@@ -78,10 +81,10 @@ namespace OitAntenna
             return sb.ToString();
         }
 
-        private static string GetIDFromUri(string uri)
+        private static long GetIDFromUri(string uri)
         {
-            string[] s = uri.Split('/');
-            return s[s.Length - 1];
+            string[] s = uri.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            return long.Parse(exceptDigits.Replace(s[s.Length - 1], ""));
         }
 
         public Blog Blog
@@ -121,6 +124,14 @@ namespace OitAntenna
             get
             {
                 return normalizedTitle;
+            }
+        }
+
+        public long ID
+        {
+            get
+            {
+                return id;
             }
         }
 

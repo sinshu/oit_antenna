@@ -25,7 +25,7 @@ namespace OitAntenna
             }
             else
             {
-                WriteLineSub(DateTime.Now.ToString("            ") + message);
+                WriteLineSub(message);
             }
         }
 

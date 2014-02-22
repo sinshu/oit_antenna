@@ -41,7 +41,6 @@ http://morinogorira.seesaa.net/index.rdf
 http://runxz.blog4.fc2.com/?xml
 http://burusoku-vip.com/index.rdf
 http://news4wide.livedoor.biz/index.rdf
-http://guideline.livedoor.biz/index.rdf
 http://blog.livedoor.jp/chihhylove/index.rdf
 http://www.gadget2ch.com/index.rdf
 http://aramame.doorblog.jp/index.rdf
@@ -65,8 +64,6 @@ http://now2chblog.blog55.fc2.com/?xml
 http://inakanews.doorblog.jp/index.rdf
 http://fullbokko.2chblog.jp/index.rdf
 http://hypernews.2chblog.jp/index.rdf
-http://pika2.livedoor.biz/index.rdf
-http://blog.livedoor.jp/maru2channel/index.rdf
 http://news.2chblog.jp/index.rdf
 http://u1sokuhou.ldblog.jp/index.rdf
 http://toanewsplus.blog60.fc2.com/?xml
@@ -78,7 +75,6 @@ http://blog.livedoor.jp/jyoushiki43/index.rdf
 http://blog.livedoor.jp/gotagotashita/index.rdf
 http://kuromacyo.livedoor.biz/index.rdf
 http://aromablack5310.blog77.fc2.com/?xml
-http://potemkin.jp/index.rdf
 http://blog.livedoor.jp/googleyoutube/index.rdf
 http://military38.com/index.rdf
 [アニメ・漫画・ラノベ]
@@ -104,4 +100,3 @@ http://minnanohimatubushi.2chblog.jp/index.rdf
 http://142ch.blog90.fc2.com/?xml
 [画像]
 http://ayutube.blog.fc2.com/?xml
-http://gazou.webhitode.com/?feed=rss2

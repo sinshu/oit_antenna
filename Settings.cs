@@ -22,6 +22,8 @@ namespace OitAntenna
 
         public const int ReloadIntervalMinutes = 15;
 
+        public const int ReloadOrderShuffleInterval = 96;
+
         public static readonly bool OutputLogFile = false;
     }
 }

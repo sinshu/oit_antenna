@@ -11,6 +11,7 @@ namespace OitAntenna
         private IDictionary<string, Category> categories;
         private IList<Blog> blogs;
         private int reloadIntervalMs;
+        private int cycleCount;
 
         private static Random random = new Random();
 
@@ -28,6 +29,8 @@ namespace OitAntenna
 
             reloadIntervalMs = 1000 * 60 * Settings.ReloadIntervalMinutes / blogs.Count;
             Log.WriteLine("巡回間隔: " + (reloadIntervalMs / 1000.0).ToString("0.0") + "秒", false);
+
+            cycleCount = 0;
         }
 
         public void Run()
@@ -54,7 +57,7 @@ namespace OitAntenna
                         Log.WriteLine("ブログ[" + blog.Title + "]から" + newArticles.Count + "件の新着記事", true);
                         foreach (Article article in newArticles)
                         {
-                            Log.WriteLine("    " + article.Title, false);
+                            Log.WriteLine(article.ID + ": " + article.Title, false);
                         }
                         try
                         {
@@ -66,6 +69,18 @@ namespace OitAntenna
                             Log.WriteException(e);
                         }
                     }
+                }
+
+                cycleCount++;
+                if (cycleCount == Settings.ReloadOrderShuffleInterval)
+                {
+                    blogs = GetRandomizedBlogList(categories.Values);
+                    Log.WriteLine("ブログの更新順序をシャッフル", true);
+
+                    DumpDebugData(categories.Values);
+                    Log.WriteLine("デバッグ情報を出力", true);
+
+                    cycleCount = 0;
                 }
             }
         }
@@ -127,6 +142,53 @@ namespace OitAntenna
                 if (!set.Add(rssUri))
                 {
                     throw new Exception("RSS[" + rssUri + "]が重複している");
+                }
+            }
+        }
+
+        private static void DumpDebugData(ICollection<Category> categories)
+        {
+            string date = DateTime.Now.ToString("yyMMddHHmmss");
+            using (StreamWriter writer = new StreamWriter("blogdump" + date + ".txt", false, Encoding.GetEncoding(Settings.TextEncoding)))
+            {
+                foreach (Category category in categories)
+                {
+                    writer.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+                    writer.WriteLine();
+                    writer.WriteLine(category.Name);
+                    writer.WriteLine();
+                    writer.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+                    foreach (Blog blog in category.Blogs)
+                    {
+                        writer.WriteLine("================================================================================");
+                        writer.WriteLine(blog.Title);
+                        writer.WriteLine("================================================================================");
+                        foreach (Article article in blog.Articles)
+                        {
+                            writer.WriteLine(article.Uri + " (" + article.Date.ToString("yy/MM/dd HH:mm:ss") + ")");
+                            writer.WriteLine(article.ID + ": " + article.Title);
+                        }
+                    }
+                }
+            }
+            using (StreamWriter writer = new StreamWriter("catedump" + date + ".txt", false, Encoding.GetEncoding(Settings.TextEncoding)))
+            {
+                foreach (Category category in categories)
+                {
+                    writer.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+                    writer.WriteLine();
+                    writer.WriteLine(category.Name);
+                    writer.WriteLine();
+                    writer.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+                    foreach (ArticleBundle bundle in category.ArticleBundles)
+                    {
+                        foreach (Article article in bundle.Articles)
+                        {
+                            writer.WriteLine(article.Uri + " (" + article.Date.ToString("yy/MM/dd HH:mm:ss") + ")");
+                            writer.WriteLine(article.ID + ": " + article.Title);
+                        }
+                        writer.WriteLine("--------------------------------------------------------------------------------");
+                    }
                 }
             }
         }
