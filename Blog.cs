@@ -46,10 +46,10 @@ namespace OitAntenna
                 string articleUri = itemElement.GetElementsByTagName("link")[0].InnerText;
                 XmlNodeList dateNodes = itemElement.GetElementsByTagName(isRss2 ? "pubDate" : "dc:date");
                 DateTime articleDate = DateTime.Parse(dateNodes[0].InnerText);
-                if (articleSet.Count < Settings.BlogMaxNumArticles || articleDate > articleSet.Max.Date)
+                string articleTitle = itemElement.GetElementsByTagName("title")[0].InnerText;
+                Article newArticle = new Article(this, articleUri, articleDate, articleTitle);
+                if (articleSet.Count < Settings.BlogMaxNumArticles || newArticle.ID > articleSet.Max.ID)
                 {
-                    string articleTitle = itemElement.GetElementsByTagName("title")[0].InnerText;
-                    Article newArticle = new Article(this, articleUri, articleDate, articleTitle);
                     if (articleSet.Add(newArticle))
                     {
                         newArticleList.Add(newArticle);

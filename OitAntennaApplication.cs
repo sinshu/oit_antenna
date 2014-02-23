@@ -57,7 +57,7 @@ namespace OitAntenna
                         Log.WriteLine("ブログ[" + blog.Title + "]から" + newArticles.Count + "件の新着記事", true);
                         foreach (Article article in newArticles)
                         {
-                            Log.WriteLine(article.ID + ": " + article.Title, false);
+                            Log.WriteLine(article.Title + " (" + article.ID + ")", false);
                         }
                         try
                         {
