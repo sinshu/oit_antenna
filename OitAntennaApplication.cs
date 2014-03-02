@@ -77,8 +77,8 @@ namespace OitAntenna
                     blogs = GetRandomizedBlogList(categories.Values);
                     Log.WriteLine("ブログの更新順序をシャッフル", true);
 
-                    DumpDebugData(categories.Values);
-                    Log.WriteLine("デバッグ情報を出力", true);
+                    //DumpDebugData(categories.Values);
+                    //Log.WriteLine("デバッグ情報を出力", true);
 
                     cycleCount = 0;
                 }

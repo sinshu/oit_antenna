@@ -90,7 +90,7 @@ http://blog.livedoor.jp/insidears/index.rdf
 [SS]
 http://ssspecial578.blog135.fc2.com/?xml
 http://morikinoko.com/index.rdf
-http://feed.rssad.jp/rss/fc2/invariant0.blog130
+http://invariant0.blog130.fc2.com/?xml
 http://blog.livedoor.jp/mode_ss/index.rdf
 http://blog.livedoor.jp/ayamevip/index.rdf
 http://elephant.2chblog.jp/index.rdf
