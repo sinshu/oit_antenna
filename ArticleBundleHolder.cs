@@ -48,15 +48,21 @@ namespace OitAntenna
             {
                 return false;
             }
-            double d = (double)TextUtility.GetLevenshteinDistance(x.NormalizedTitle, y.NormalizedTitle) / length;
-            if (d < Settings.StringDistanceThreshold)
-            {
-                return true;
-            }
-            else
+
+            double d1 = 1 - (double)Math.Min(x.NormalizedTitle.Length, y.NormalizedTitle.Length)
+                / Math.Max(x.NormalizedTitle.Length, y.NormalizedTitle.Length);
+            if (d1 >= Settings.StringDistanceThreshold)
             {
                 return false;
             }
+
+            double d2 = (double)TextUtility.GetLevenshteinDistance(x.NormalizedTitle, y.NormalizedTitle) / length;
+            if (d2 >= Settings.StringDistanceThreshold)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public ICollection<ArticleBundle> ArticleBundles

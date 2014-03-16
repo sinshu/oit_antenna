@@ -5,7 +5,6 @@ http://bipblog.com/index.rdf
 http://workingnews.blog117.fc2.com/?xml
 http://www.mudainodocument.com/index.rdf
 http://chaos2ch.com/index.rdf
-http://intellife2ch.com/index.rdf
 http://alfalfalfa.com/index.rdf
 http://himasoku.com/index.rdf
 http://blog.livedoor.jp/nicovip2ch/index.rdf
@@ -48,6 +47,7 @@ http://damage0.blomaga.jp/index.rdf
 http://totalmatomedia.blog.fc2.com/?xml
 http://nnt-sokuhou.com/index.rdf
 http://shikaku2ch.doorblog.jp/index.rdf
+http://blog.livedoor.jp/itsoku/index.rdf
 [ニュース]
 http://blog.livedoor.jp/dqnplus/index.rdf
 http://zinger-hole.net/rss.xml
@@ -68,7 +68,6 @@ http://news.2chblog.jp/index.rdf
 http://u1sokuhou.ldblog.jp/index.rdf
 http://toanewsplus.blog60.fc2.com/?xml
 http://blog.livedoor.jp/yu_ps13/index.rdf
-http://huteikisokuhou.blog116.fc2.com/?xml
 http://white0wine.blog10.fc2.com/?xml
 http://stockmatome.blog118.fc2.com/?xml
 http://blog.livedoor.jp/jyoushiki43/index.rdf
