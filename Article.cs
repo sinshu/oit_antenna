@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -83,8 +84,10 @@ namespace OitAntenna
 
         private static long GetIDFromUri(string uri)
         {
-            string[] s = uri.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            return long.Parse(exceptDigits.Replace(s[s.Length - 1], ""));
+            string s = uri.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+            long id;
+            long.TryParse(exceptDigits.Replace(s, ""), out id);
+            return id;
         }
 
         public Blog Blog

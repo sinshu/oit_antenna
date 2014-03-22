@@ -41,7 +41,17 @@ namespace OitAntenna
 
         private static void WriteLineSub(string message)
         {
-            Console.WriteLine(message);
+            if (message.Contains("(警告"))
+            {
+                ConsoleColor color = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(message);
+                Console.ForegroundColor = color;
+            }
+            else
+            {
+                Console.WriteLine(message);
+            }
             if (Settings.OutputLogFile)
             {
                 writer.WriteLine(message);

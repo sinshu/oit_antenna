@@ -48,6 +48,7 @@ http://totalmatomedia.blog.fc2.com/?xml
 http://nnt-sokuhou.com/index.rdf
 http://shikaku2ch.doorblog.jp/index.rdf
 http://blog.livedoor.jp/itsoku/index.rdf
+http://modernnomad.net/index.rdf
 [ニュース]
 http://blog.livedoor.jp/dqnplus/index.rdf
 http://zinger-hole.net/rss.xml
