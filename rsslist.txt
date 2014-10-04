@@ -23,6 +23,7 @@ http://chaos2ch.com/index.rdf
 http://cherio199.blog120.fc2.com/?xml
 http://damage0.blomaga.jp/index.rdf
 http://exawarosu.net/index.rdf
+http://fesoku.net/index.rdf
 http://gahalog.2chblog.jp/index.rdf
 http://gasoku.livedoor.biz/index.rdf
 http://hamusoku.com/index.rdf
@@ -42,6 +43,7 @@ http://michaelsan.livedoor.biz/index.rdf
 http://modernnomad.net/index.rdf
 http://momosoku.doorblog.jp/index.rdf
 http://morinogorira.seesaa.net/index.rdf
+http://netaatoz.jp/index.rdf
 http://news4vip.livedoor.biz/index.rdf
 http://news4wide.livedoor.biz/index.rdf
 http://now2chblog.blog55.fc2.com/?xml
@@ -53,6 +55,7 @@ http://ryusoku.com/index.rdf
 http://shikaku2ch.doorblog.jp/index.rdf
 http://sonicch.com/index.rdf
 http://sugoiyasokuhou.doorblog.jp/index.rdf
+http://tenkomo.com/?xml
 http://totalmatomedia.blog.fc2.com/?xml
 http://underworld2ch.blog29.fc2.com/?xml
 http://vippers.jp/index.rdf
@@ -68,12 +71,15 @@ http://zch-vip.com/index.rdf
 http://zinger-hole.net/rss.xml
 [ニュース]
 http://2ch-newsnomori.blog.jp/index.rdf
+http://blog.livedoor.jp/abenomikususokuhou/index.rdf
 http://blog.livedoor.jp/aoba_f/index.rdf
+http://blog.livedoor.jp/corez18c24-mili777/index.rdf
 http://blog.livedoor.jp/dqnplus/index.rdf
 http://blog.livedoor.jp/googleyoutube/index.rdf
 http://blog.livedoor.jp/gotagotashita/index.rdf
 http://blog.livedoor.jp/jyoushiki43/index.rdf
 http://blog.livedoor.jp/livejupiter2/index.rdf
+http://blog.livedoor.jp/societynews/index.rdf
 http://blog.livedoor.jp/video_news/index.rdf
 http://blog.livedoor.jp/yu_ps13/index.rdf
 http://bororon.doorblog.jp/index.rdf
@@ -83,6 +89,7 @@ http://fxya.blog129.fc2.com/?xml
 http://gogotorimaru.blog19.fc2.com/?xml
 http://hosyusokuhou.jp/index.rdf
 http://inakanews.doorblog.jp/index.rdf
+http://kimsoku.com/index.rdf
 http://kuromacyo.livedoor.biz/index.rdf
 http://matometanews.com/index.rdf
 http://military38.com/index.rdf
@@ -92,13 +99,16 @@ http://nnt-sokuhou.com/index.rdf
 http://stockmatome.blog118.fc2.com/?xml
 http://toanewsplus.blog60.fc2.com/?xml
 http://tokihakita.blog91.fc2.com/?xml
+http://tokutei-ajia.blog.jp/index.rdf
 http://u1sokuhou.ldblog.jp/index.rdf
+http://uyosoku.com/feed
 http://www.scienceplus2ch.com/index.rdf
 http://www.wara2ch.com/index.rdf
 [アニメ・漫画・ラノベ]
 http://2gigenchan.blog.fc2.com/?xml
 http://blog.livedoor.jp/insidears/index.rdf
 http://blog.livedoor.jp/nizigami/index.rdf
+http://blog.livedoor.jp/nomuken77/index.rdf
 http://blog.livedoor.jp/seiyufan/index.rdf
 http://grasoku.blomaga.jp/index.rdf
 http://newnews-moe.com/index.rdf
@@ -107,6 +117,7 @@ http://onecall2ch.com/index.rdf
 http://otakulifehack.com/index.rdf
 http://yaraon.blog109.fc2.com/?xml
 http://yuriplus.com/?xml
+http://zakuzaku911.com/index.rdf
 [SS]
 http://142ch.blog90.fc2.com/?xml
 http://blog.livedoor.jp/ayamevip/index.rdf
