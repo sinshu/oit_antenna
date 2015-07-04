@@ -1,0 +1,130 @@
+body
+{
+	background-color: white;
+}
+
+.pagetitle
+{
+	font-size: 2em;
+	font-weight: bold;
+	color: #606060;
+}
+
+.lastupdate
+{
+	text-align: center;
+	color: #808080;
+}
+
+a.article
+{
+	font-size: 0.9em;
+	line-height: 1.3em;
+	text-decoration: none;
+	color: #606060;
+}
+
+a.article:hover
+{
+	background-color: #D0D0D0;
+}
+
+a.duplicate
+{
+	font-size: 0.9em;
+	text-decoration: none;
+	color: lightgreen;
+}
+
+a.duplicate:hover
+{
+	color: darkgreen;
+}
+
+.date
+{
+	font-size: 0.9em;
+	font-weight: bold;
+	text-decoration: underline;
+	color: #808080;
+}
+
+.time
+{
+	white-space: nowrap;
+	font-size: 0.9em;
+	color: #808080;
+}
+
+.blogtitle
+{
+	white-space: nowrap;
+}
+
+.articlelist
+{
+	padding: 0.3em;
+	border-collapse: separate;
+	border-spacing: 0.3em;
+}
+
+.largewindow
+{
+	width: auto;
+	height: 24em;
+	border-style: solid;
+	border-width: 0.3em;
+	border-color: lightgreen;
+	overflow-y: scroll;
+}
+
+.halfwindow
+{
+	width: auto;
+	height: 24em;
+	border-style: solid;
+	border-width: 0.3em;
+	border-color: lightgreen;
+	overflow-y: scroll;
+}
+
+.titlebar
+{
+	padding-top: 0.3em;
+	padding-left: 1em;
+	padding-right: 1em;
+	font-weight: bold;
+	color: darkgreen;
+	background-color: lightgreen;
+}
+
+.category
+{
+	width: auto;
+	padding: 0.3em 1em;
+	font-weight: bold;
+	color: darkgreen;
+	background-color: lightgreen;
+}
+
+.mainbox
+{
+	width: 63em;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 1em;
+}
+
+.leftbox
+{
+	width: 31em;
+	float: left;
+	margin-bottom: 1em;
+}
+
+.rightbox
+{
+	width: 31em;
+	float: right;
+	margin-bottom: 1em;
+}
