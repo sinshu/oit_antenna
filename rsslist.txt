@@ -132,7 +132,6 @@ http://minnanohimatubushi.2chblog.jp/index.rdf
 http://morikinoko.com/index.rdf
 http://ssspecial578.blog135.fc2.com/?xml
 [画像]
-http://ayutube.blog.fc2.com/?xml
+http://ayu-nya.com/feed
 http://blog.livedoor.jp/nichmatomerunn/index.rdf
 http://blog.livedoor.jp/nicovip2ch/index.rdf
-http://vipcle.com/feed
