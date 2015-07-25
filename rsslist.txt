@@ -51,7 +51,7 @@ http://netaatoz.jp/index.rdf
 http://news4vip.livedoor.biz/index.rdf
 http://news4wide.livedoor.biz/index.rdf
 http://now2chblog.blog55.fc2.com/?xml
-http://nyaasokuvip.blog.fc2.com/?xml
+http://nyaasokuvip.net/feed
 http://oniyomediary.com/index.rdf
 http://rabitsokuhou.2chblog.jp/index.rdf
 http://rajic.ldblog.jp/index.rdf
